@@ -16,7 +16,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
     }
-
+    document.getElementById('answerbox').addEventListener('keydown', function(event){
+        if(event.type === 'Enter'){
+            checkAnswer();
+        }
+    })
     runGame(gameType);
 });
 
@@ -24,7 +28,11 @@ document.addEventListener('DOMContentLoaded', function () {
  * The main game "loop", called when the script is first loaded
  * and after the users's answer has been processed
  */
-function runGame(gameType) { 
+function runGame(gameType) {
+
+    document.getElementById('answerbox').value = "";
+    document.getElementById('answerbox').focus();
+
     // create two random numbers between 0-25
     let num1 = Math.floor(Math.random() * 25) + 1;
     let num2 = Math.floor(Math.random() * 25) + 1;
